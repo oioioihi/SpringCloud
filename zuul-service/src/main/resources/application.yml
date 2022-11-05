@@ -8,6 +8,7 @@ spring:
 zuul:
   routes:
     first-service:
+      # 아래의 path와 일치하는 request와 들어오면 localhost:8081로 route하겠다는 의미
       path: /first-service/**
       url: http://localhost:8081
     second-service:
