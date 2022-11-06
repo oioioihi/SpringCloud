@@ -29,7 +29,8 @@ public class CustomFilter extends AbstractGatewayFilterFactory<CustomFilter.Conf
             log.info("Custom PRE filter: request id -> {}", request.getId());
 
             // Custom Post Filter. Suppose we can call error response handler based on errror code.
-            return chain.filter(exchange).then(Mono.fromR unnable(() -> { //Spring5부터 지원되는 Mono 데이터 타입으로 리턴
+            return chain.filter(exchange).then(Mono.fromRunnable(() -> { //Spring Framework5부터 지원되는 webflux구조에 의한 Mono 데이터 타입으로 리턴.
+                // webflux구조란 서버에서 reactive 스타일의 애플리케이션 개발을 도와주는 모둘이다.
                 log.info("Custom POST filter: response code -> {}", response.getStatusCode());
             }));
         };
