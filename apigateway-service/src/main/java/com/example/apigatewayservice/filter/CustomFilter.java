@@ -11,21 +11,25 @@ import reactor.core.publisher.Mono;
 @Component
 @Slf4j
 public class CustomFilter extends AbstractGatewayFilterFactory<CustomFilter.Config> {
+    // CustomFilter는 반드시 AbstractGatewayFilterFactory<자신의 클래스>를 상속받아서 선언해야한다.
     public CustomFilter() {
         super(Config.class);
     }
 
     @Override
-    public GatewayFilter apply(Config config) {
-        // Custom Pre Filter
+    public GatewayFilter apply(Config config) { // 구현해야할 메소드는 하나 -> apply()
+        // Custom Pre Filter. Suppose we can extract JWT and perform Authentication.
         return (exchange, chain) -> {
+
+            //Netty(비동기 내장서버,Spring5 부터 지원)는 ServletHttpRequest가 아닌 ServerRequest(ServerHttpRequest)객체를 사용함
             ServerHttpRequest request = exchange.getRequest();
+            //exchange를 통해 Request객체를 받아올 수 있음.
             ServerHttpResponse response = exchange.getResponse();
 
             log.info("Custom PRE filter: request id -> {}", request.getId());
 
-            // Custom Post Filter
-            return chain.filter(exchange).then(Mono.fromRunnable(() -> {
+            // Custom Post Filter. Suppose we can call error response handler based on errror code.
+            return chain.filter(exchange).then(Mono.fromR unnable(() -> { //Spring5부터 지원되는 Mono 데이터 타입으로 리턴
                 log.info("Custom POST filter: response code -> {}", response.getStatusCode());
             }));
         };
