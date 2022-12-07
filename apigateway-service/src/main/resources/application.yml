@@ -24,10 +24,11 @@ spring:
             baseMessage: Spring Cloud Gateway Global Filter
             preLogger: true
             postLogger: true
-      routes:
+
+      routes: #Route객체를 여러개 등록가능
 #        - id: user-service
 #          uri: lb://USER-SERVICE
-#          predicates:
+#          predicates: //조건절의 개념
 #            - Path=/user-service/**
         - id: user-service
           uri: lb://USER-SERVICE
