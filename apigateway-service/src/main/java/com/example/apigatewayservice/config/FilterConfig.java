@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 //@Configuration
-//@Configuration -> 애노테이션을 달면 스프링부트가 부트스트램에 의해서 작동될 때 해당 클래스에 선언된 @Bean을 메모리에 빈으로 먼저 등록함. Property대신 JavaCode로 설정을 해주는 것.
+//@Configuration -> 애노테이션을 달면 스프링부트가 부트스트랩에 의해서 작동될 때 해당 클래스에 선언된 @Bean을 메모리에 빈으로 먼저 등록함. Property대신 JavaCode로 설정을 해주는 것.
 public class FilterConfig {
 //    @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {

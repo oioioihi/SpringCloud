@@ -34,6 +34,8 @@ public class LoggingFilter extends AbstractGatewayFilterFactory<LoggingFilter.Co
 //                }
 //            }));
 //        });
+
+        // 위의 주석과 같은 내용
         GatewayFilter filter = new OrderedGatewayFilter((exchange, chain) -> {
             ServerHttpRequest request = exchange.getRequest();
             ServerHttpResponse response = exchange.getResponse();

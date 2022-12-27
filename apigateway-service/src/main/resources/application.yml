@@ -1,6 +1,6 @@
 server:
   port: 8000
-
+#Eureka Server(Naming Service) 정보
 eureka:
   client:
     register-with-eureka: true
@@ -18,9 +18,11 @@ spring:
     password: guest
   cloud:
     gateway:
+      # Global Filter에 대한 설정
       default-filters:
         - name: GlobalFilter
           args:
+            # GlobalFiler Class의 Config 내장 클래스에 적용됨.
             baseMessage: Spring Cloud Gateway Global Filter
             preLogger: true
             postLogger: true

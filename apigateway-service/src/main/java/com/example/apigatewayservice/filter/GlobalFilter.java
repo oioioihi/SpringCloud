@@ -15,7 +15,7 @@ import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-
+// Global Filter란? : Custom Filter와는 다르게 모든 라우트에 대하여 적용되는 필터 개념. 모든 필터 중 제일 먼저 적용되고, 제일 마지막에 종료 됨.
 @Component
 @Slf4j
 public class GlobalFilter extends AbstractGatewayFilterFactory<GlobalFilter.Config> {
