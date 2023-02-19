@@ -40,7 +40,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) throws AuthenticationException {
         try {
-            RequestLogin creds = new ObjectMapper().readValue(request.getInputStream(), RequestLogin.class);
+            RequestLogin creds = new ObjectMapper().readValue(request.getInputStream(), RequestLogin.class); // 로그인을 post로 처리하기때문에 request parameter로 받을 수 없기 때문에 inputStream으로 받는다.
+
 
             return getAuthenticationManager().authenticate(
                     new UsernamePasswordAuthenticationToken(
